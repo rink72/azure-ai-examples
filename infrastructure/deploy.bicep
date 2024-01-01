@@ -6,6 +6,9 @@ param resourceGroupName string
 @description('Name of the Azure Machine Learning workspace')
 param workspaceName string
 
+@description('Name of the Azure KeyVault')
+param keyVaultName string
+
 @description('Tags to apply to all resources')
 param tags object
 
@@ -25,6 +28,7 @@ module mlWorkspace 'composite/mlworkspace.bicep' = {
   scope: resourceGroup
   params: {
     workspaceName: workspaceName
+    keyVaultName: keyVaultName
     location: location
     tags: tags
   }

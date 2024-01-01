@@ -1,7 +1,10 @@
 using '../deploy.bicep'
 
-param resourceGroupName = 'ai-study-rgp'
-param workspaceName = 'ai-study-ml'
+var namePrefix = 'ai-study'
+
+param resourceGroupName = '${namePrefix}-rgp'
+param workspaceName = '${namePrefix}-ml'
+param keyVaultName = '${namePrefix}-kv'
 param tags = {
   group: 'ai-study'
 }

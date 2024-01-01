@@ -1,4 +1,4 @@
-name: Deploy machine learning infrastructure
+name: Deploy ML infrastructure
 
 on:
   workflow_dispatch:

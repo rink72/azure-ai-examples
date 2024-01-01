@@ -17,7 +17,7 @@ permissions:
 
 env:
   infrastructureTemplathPath: infrastructure/deploy.bicep
-  infrastructureParametersPath: infrastructure/_parameters/mlstudio.json
+  infrastructureParametersPath: infrastructure/_parameters/mlstudio.bicepparam
 
 jobs:
   infrastructure:

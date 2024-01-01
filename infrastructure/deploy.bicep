@@ -9,6 +9,9 @@ param workspaceName string
 @description('Name of the Azure KeyVault')
 param keyVaultName string
 
+@description('Name of the Azure Storage Account')
+param storageAccountName string
+
 @description('Tags to apply to all resources')
 param tags object
 
@@ -29,6 +32,7 @@ module mlWorkspace 'composite/mlworkspace.bicep' = {
   params: {
     workspaceName: workspaceName
     keyVaultName: keyVaultName
+    storageAccountName: storageAccountName
     location: location
     tags: tags
   }

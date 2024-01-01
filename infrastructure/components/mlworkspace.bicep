@@ -10,14 +10,23 @@ param location string = resourceGroup().location
 @description('Keyvault id')
 param keyVaultId string
 
+@description('Storage account id')
+param storageAccountId string
+
 resource mlWorkspace 'Microsoft.MachineLearningServices/workspaces@2023-10-01' = {
   name:  name
   tags:  tags
   location: location
+  kind: 'Default'
+  sku: {
+    name: 'Basic'
+    tier: 'Basic'
+  }
   identity: {
     type: 'SystemAssigned'
   }
   properties: {
     keyVault: keyVaultId
+    storageAccount: storageAccountId
   }
 }

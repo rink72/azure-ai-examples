@@ -1,0 +1,49 @@
+name: Deploy machine learning infrastructure
+description: Deploy machine learning infrastructure
+
+inputs:
+  templatePath:
+    type: string
+    title: Template path
+    description: Path to the template file
+    required: true
+
+  parametersPath:
+    type: string
+    title: Parameters path
+    description: Path to the parameters file
+    required: true
+
+  location:
+    type: string
+    title: Location
+    description: Azure region to deploy to
+    default: australiaeast
+    required: false
+
+  preview:
+    type: boolean
+    title: Preview
+    description: Preview the deployment
+    required: false
+    default: true
+
+runs:
+  using: composite
+  steps:
+    - name: Deploy infrastructure
+      shell: bash
+      run: |
+        if [ "${{ inputs.preview }}" == "true" ]; then
+          az deployment sub what-if \
+            --location ${{ inputs.location }} \
+            --template-file ${{ inputs.templatePath }} \
+            --parameters ${{ inputs.parametersPath }} \
+            --output table
+        else
+          az deployment sub create \
+            --location ${{ inputs.location }} \
+            --template-file ${{ inputs.templatePath }} \
+            --parameters ${{ inputs.parametersPath }} \
+            --output table
+        fi

@@ -1,0 +1,43 @@
+name: Deploy machine learning infrastructure
+
+on:
+  workflow_dispatch:
+    inputs:
+      preview:
+        description: Preview changes
+        type: choice
+        required: true
+        options:
+          - false
+          - true
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  infrastructureTemplathPath: infrastructure/deploy.bicep
+  infrastructureParametersPath: infrastructure/_parameters/mlstudio.json
+
+jobs:
+  infrastructure:
+    name: Infrastructure
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+
+      - name: Deploy infrastructure
+        uses: ./.github/actions/ml-infrastructure
+        with:
+          templatePath: ${{ env.infrastructureTemplathPath }}
+          parametersPath: ${{ env.infrastructureParametersPath }}
+          preview: ${{ github.event.inputs.preview }}
+

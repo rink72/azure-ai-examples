@@ -13,6 +13,9 @@ param keyVaultId string
 @description('Storage account id')
 param storageAccountId string
 
+@description('Application Insights id')
+param applicationInsightsId string
+
 resource mlWorkspace 'Microsoft.MachineLearningServices/workspaces@2023-10-01' = {
   name:  name
   tags:  tags
@@ -28,5 +31,6 @@ resource mlWorkspace 'Microsoft.MachineLearningServices/workspaces@2023-10-01' =
   properties: {
     keyVault: keyVaultId
     storageAccount: storageAccountId
+    applicationInsights: applicationInsightsId
   }
 }

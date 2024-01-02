@@ -7,6 +7,12 @@ param keyVaultName string
 @description('Storage account name')
 param storageAccountName string
 
+@description('Log Analytics name')
+param logAnalyticsName string
+
+@description('Application Insights name')
+param appInsightsName string
+
 @description('Resource location')
 param location string = resourceGroup().location
 
@@ -34,6 +40,25 @@ module storageAccount '../components/storageaccount.bicep' = {
   }
 }
 
+module logAnalytics '../components/laworkspace.bicep' = {
+  name: '${logAnalyticsName}-${deploymentSuffix}'
+  params: {
+    name: logAnalyticsName
+    location: location
+    tags: tags
+  }
+}
+
+module appInsights '../components/applicationinsights.bicep' = {
+  name: '${appInsightsName}-${deploymentSuffix}'
+  params: {
+    name: appInsightsName
+    location: location
+    workspaceResourceId: logAnalytics.outputs.logAnalyticsId
+    tags: tags
+  }
+}
+
 module mlWorkspace '../components/mlworkspace.bicep' = {
   name: '${workspaceName}-${deploymentSuffix}'
   params: {
@@ -42,5 +67,6 @@ module mlWorkspace '../components/mlworkspace.bicep' = {
     tags: tags
     keyVaultId: keyvault.outputs.keyvaultId
     storageAccountId: storageAccount.outputs.storageAccountId
+    applicationInsightsId: appInsights.outputs.applicationInsightsResourceId
   }
 }

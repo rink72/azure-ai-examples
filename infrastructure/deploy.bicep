@@ -12,6 +12,12 @@ param keyVaultName string
 @description('Name of the Azure Storage Account')
 param storageAccountName string
 
+@description('Name of the Log Analytics workspace')
+param logAnalyticsWorkspaceName string
+
+@description('Name of the Application Insights resource')
+param applicationInsightsName string
+
 @description('Tags to apply to all resources')
 param tags object
 
@@ -33,6 +39,8 @@ module mlWorkspace 'composite/mlworkspace.bicep' = {
     workspaceName: workspaceName
     keyVaultName: keyVaultName
     storageAccountName: storageAccountName
+    appInsightsName: applicationInsightsName
+    logAnalyticsName: logAnalyticsWorkspaceName
     location: location
     tags: tags
   }

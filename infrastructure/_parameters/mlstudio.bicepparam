@@ -1,4 +1,4 @@
-using '../deploy.bicep'
+using '../deploy-mlstudio.bicep'
 
 var namePrefix = 'rink72aistudy'
 

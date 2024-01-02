@@ -1,5 +1,5 @@
-name: Deploy machine learning infrastructure
-description: Deploy machine learning infrastructure
+name: Deploy infrastructure
+description: Deploy infrastructure
 
 inputs:
   templatePath:

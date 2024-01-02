@@ -1,4 +1,4 @@
-name: Deploy ML infrastructure
+name: Deploy Cognitive service infrastructure
 
 on:
   workflow_dispatch:
@@ -16,8 +16,8 @@ permissions:
   contents: read
 
 env:
-  infrastructureTemplathPath: infrastructure/deploy.bicep
-  infrastructureParametersPath: infrastructure/_parameters/mlstudio.bicepparam
+  infrastructureTemplathPath: infrastructure/deploy-cognitive.bicep
+  infrastructureParametersPath: infrastructure/_parameters/cognitive.bicepparam
 
 jobs:
   infrastructure:
@@ -35,7 +35,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
 
       - name: Deploy infrastructure
-        uses: ./.github/actions/ml-infrastructure
+        uses: ./.github/actions/infra-deploy
         with:
           templatePath: ${{ env.infrastructureTemplathPath }}
           parametersPath: ${{ env.infrastructureParametersPath }}

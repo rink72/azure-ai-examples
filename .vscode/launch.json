@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test language detection",
+            "runtimeArgs": [
+                "-r",
+                "ts-node/register"
+            ],
+            "args": [
+                "${workspaceFolder}/apps/language-detection/main.ts"
+            ],
+            "cwd": "${workspaceFolder}/apps/language-detection",
+            "console": "integratedTerminal"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+      "target": "es6",
+      "lib": [
+          "es2023",
+          "dom"
+      ],
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "outDir": "./build",
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "resolveJsonModule": true
+  }
+}

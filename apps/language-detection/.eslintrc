@@ -1,0 +1,42 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+        "curly": "error",
+        "brace-style": [
+            "error",
+            "allman",
+            {
+                "allowSingleLine": true
+            }
+        ],
+        "@typescript-eslint/brace-style": [
+            "error",
+            "allman",
+            {
+                "allowSingleLine": true
+            }
+        ],
+        "no-useless-catch": 2,
+        "@typescript-eslint/no-unused-vars": "error",
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 0
+            }
+        ]
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    }
+}

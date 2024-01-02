@@ -1,0 +1,20 @@
+name: Run tests
+description: Run tests
+
+inputs:
+  appName:
+    type: string
+    title: App name
+    description: Name of the app to test
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Install dependencies
+      run: npm ci
+      working-directory: ./apps/${{ inputs.appName }}
+
+    - name: Run tests
+      run: npm test
+      working-directory: ./apps/${{ inputs.appName }}

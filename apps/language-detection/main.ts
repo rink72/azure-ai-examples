@@ -32,7 +32,7 @@ async function main()
         {
             try
             {
-                const result = (await client.detectLanguage([answer]))[0]
+                const result = (await client.detectLanguage([answer], ""))[0]
 
                 if (result.error)
                 {

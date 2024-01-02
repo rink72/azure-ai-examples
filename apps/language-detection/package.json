@@ -1,15 +1,18 @@
 {
-  "scripts": {
-    "lint": "eslint --fix **/*.ts"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.13.1",
-    "@typescript-eslint/parser": "^6.13.1",
-    "typescript": "^5.3.3"
-  },
-  "dependencies": {
-    "@azure/ai-text-analytics": "^5.1.0",
-    "@azure/identity": "^4.0.0",
-    "ts-node": "^10.9.2"
-  }
+    "scripts": {
+        "lint": "eslint --fix **/*.ts",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^6.13.1",
+        "@typescript-eslint/parser": "^6.13.1",
+        "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "@azure/ai-text-analytics": "^5.1.0",
+        "@azure/identity": "^4.0.0",
+        "@types/jest": "^29.5.11",
+        "ts-jest": "^29.1.1",
+        "ts-node": "^10.9.2"
+    }
 }

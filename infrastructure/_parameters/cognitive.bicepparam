@@ -11,7 +11,7 @@ param principals = [
     type: 'User'
   }
   {
-    id: 'f1e435f2-387d-4b91-949f-8e5eb8ab038b'
+    id: 'ddc0a372-d311-4a8b-8369-815fec7eb992'
     type: 'ServicePrincipal'
   }
 ]

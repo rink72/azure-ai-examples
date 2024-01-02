@@ -12,7 +12,7 @@ runs:
   using: composite
   steps:
     - name: Install dependencies
-      run: npm ci
+      run: npm install
       working-directory: ./apps/${{ inputs.appName }}
 
     - name: Run tests

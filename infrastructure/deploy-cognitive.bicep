@@ -15,6 +15,9 @@ param location string = 'australiaeast'
 @description('Suffix for ARM deployment names')
 param deploymentNameSuffix string = utcNow('yyyyMMddhhmmss')
 
+@description('Principals to assign Cognitive Services Contributor access')
+param principals array = []
+
 resource resourceGroup 'Microsoft.Resources/resourceGroups@2023-07-01' = {
   name: resourceGroupName
   location: location
@@ -25,6 +28,7 @@ module cognitiveService 'composite/cognitiveservice.bicep' = {
   scope: resourceGroup
   params: {
     cognitiveServiceName: cognitiveServiceName
+    principals: principals
     location: location
     tags: tags
   }

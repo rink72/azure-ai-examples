@@ -14,7 +14,9 @@ runs:
     - name: Install dependencies
       run: npm install
       working-directory: ./apps/${{ inputs.appName }}
+      shell: bash
 
     - name: Run tests
       run: npm test
       working-directory: ./apps/${{ inputs.appName }}
+      shell: bash

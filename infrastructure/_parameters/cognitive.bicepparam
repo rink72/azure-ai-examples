@@ -11,7 +11,7 @@ param principals = [
     type: 'User'
   }
   {
-    id: 'ddc0a372-d311-4a8b-8369-815fec7eb992'
+    id: 'f0424dfa-60a3-41b7-a9d0-a67ad7a914dd' // Object id of enterprise app
     type: 'ServicePrincipal'
   }
 ]

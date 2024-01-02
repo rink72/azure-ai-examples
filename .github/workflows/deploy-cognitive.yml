@@ -43,6 +43,7 @@ jobs:
 
   tests:
     name: Tests
+    if: github.event.inputs.preview == 'false'
     runs-on: ubuntu-latest
     needs: infrastructure
     steps:

@@ -15,10 +15,7 @@ export async function describeImageDemo(client: ComputerVisionClient)
         console.log(`Description of ${imageName}:`);
         console.log('--------------------------------------------------')
 
-        result.captions?.forEach(caption =>
-        {
-            console.log(caption.text);
-        });
+        result.captions?.forEach(caption => console.log(caption.text));
 
         console.log('')
         console.log('')

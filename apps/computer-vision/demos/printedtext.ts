@@ -6,7 +6,7 @@ export async function imageToTextDemo(client: ComputerVisionClient)
 {
     for (const imageName of config.imageToTextImages)
     {
-        const imagePath = `${config.imageLocation}${imageName}`;
+        const imagePath = `${config.imageLocation}/${imageName}`;
         const imageData = fs.readFileSync(imagePath);
 
         const result = await client.recognizePrintedTextInStream(true, imageData);

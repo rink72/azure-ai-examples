@@ -1,9 +1,8 @@
 import { ComputerVisionClient } from "@azure/cognitiveservices-computervision";
-import { imageToTextDemo } from "./demos/printedtext";
 import { DefaultAzureCredential } from "@azure/identity";
 import { config } from "./config";
 import { TokenCredentials } from "@azure/ms-rest-js";
-import { describeImageDemo } from "./demos/describeimage";
+import { getThumbnailDemo } from "./demos/createthumbnail";
 
 async function main()
 {
@@ -15,9 +14,11 @@ async function main()
         new TokenCredentials(visionToken),
         config.cognitiveEndpoint);
 
-    await imageToTextDemo(visionClient);
+    // await imageToTextDemo(visionClient);
 
-    await describeImageDemo(visionClient);
+    // await describeImageDemo(visionClient);
+
+    await getThumbnailDemo(visionClient);
 }
 
 main();

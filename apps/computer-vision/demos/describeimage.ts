@@ -6,7 +6,7 @@ export async function describeImageDemo(client: ComputerVisionClient)
 {
     for (const imageName of config.describeImages)
     {
-        const imagePath = `${config.imageLocation}${imageName}`;
+        const imagePath = `${config.imageLocation}/${imageName}`;
         const imageData = fs.readFileSync(imagePath);
 
         const result = await client.describeImageInStream(imageData, {});

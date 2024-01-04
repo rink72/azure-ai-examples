@@ -25,10 +25,10 @@ export const config: IConfig = {
         "hockey-image.jpg"
     ],
     brandImages: [
-        "wayne-gretzky.jpg",
         "microsoft-linux.jpg",
         "famous-brands.png",
         "nike.webp",
-        "logo-redesign.webp"
+        "logo-redesign.webp",
+        "suzuki.jpg"
     ]
 }

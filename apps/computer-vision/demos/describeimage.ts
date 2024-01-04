@@ -2,6 +2,9 @@ import { ComputerVisionClient } from "@azure/cognitiveservices-computervision";
 import { config } from "../config";
 import * as fs from "fs";
 
+// Note that this api used to be able to identify celebrities, but that
+// functionality has been removed by Microsoft due to privacy concerns
+
 export async function describeImageDemo(client: ComputerVisionClient)
 {
     for (const imageName of config.describeImages)

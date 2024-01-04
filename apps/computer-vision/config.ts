@@ -1,10 +1,11 @@
 export interface IConfig
 {
-    cognitiveEndpoint: string;
-    imageLocation: string;
-    describeImages: string[],
-    imageToTextImages: string[],
+    cognitiveEndpoint: string
+    imageLocation: string
+    describeImages: string[]
+    imageToTextImages: string[]
     thumbnailImages: string[]
+    brandImages: string[]
 }
 
 export const config: IConfig = {
@@ -22,5 +23,12 @@ export const config: IConfig = {
     thumbnailImages: [
         "wayne-gretzky.jpg",
         "hockey-image.jpg"
+    ],
+    brandImages: [
+        "wayne-gretzky.jpg",
+        "microsoft-linux.jpg",
+        "famous-brands.png",
+        "nike.webp",
+        "logo-redesign.webp"
     ]
 }

@@ -2,7 +2,7 @@ import { ComputerVisionClient } from "@azure/cognitiveservices-computervision";
 import { DefaultAzureCredential } from "@azure/identity";
 import { config } from "./config";
 import { TokenCredentials } from "@azure/ms-rest-js";
-import { describeImageDemo } from "./demos/describeimage";
+import { brandDetectionDemo } from "./demos/branddetection";
 
 async function main()
 {
@@ -16,9 +16,11 @@ async function main()
 
     // await imageToTextDemo(visionClient);
 
-    await describeImageDemo(visionClient);
+    // await describeImageDemo(visionClient);
 
     // await getThumbnailDemo(visionClient);
+
+    await brandDetectionDemo(visionClient);
 }
 
 main();

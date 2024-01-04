@@ -9,13 +9,17 @@ export async function describeImageDemo(client: ComputerVisionClient)
         const imagePath = `${config.imageLocation}/${imageName}`;
         const imageData = fs.readFileSync(imagePath);
 
-        const result = await client.describeImageInStream(imageData, {});
+        const tagsResult = await client.tagImageInStream(imageData);
+        const describeResult = await client.describeImageInStream(imageData, {});
 
         console.log('--------------------------------------------------')
         console.log(`Description of ${imageName}:`);
         console.log('--------------------------------------------------')
 
-        result.captions?.forEach(caption => console.log(caption.text));
+        const tagList = tagsResult.tags?.map(tag => tag.name);
+
+        console.log(tagList);
+        describeResult.captions?.forEach(caption => console.log(caption.text));
 
         console.log('')
         console.log('')

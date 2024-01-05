@@ -2,7 +2,7 @@ import { ComputerVisionClient } from "@azure/cognitiveservices-computervision";
 import { DefaultAzureCredential } from "@azure/identity";
 import { config } from "./config";
 import { TokenCredentials } from "@azure/ms-rest-js";
-import { landmarkDetectionDemo } from "./demos/landmarkdetection";
+import { imageToTextDemo } from "./demos/printedtext";
 
 async function main()
 {
@@ -14,7 +14,7 @@ async function main()
         new TokenCredentials(visionToken),
         config.cognitiveEndpoint);
 
-    // await imageToTextDemo(visionClient);
+    await imageToTextDemo(visionClient);
 
     // await describeImageDemo(visionClient);
 
@@ -22,7 +22,7 @@ async function main()
 
     // await brandDetectionDemo(visionClient);
 
-    await landmarkDetectionDemo(visionClient);
+    // await landmarkDetectionDemo(visionClient);
 }
 
 main();

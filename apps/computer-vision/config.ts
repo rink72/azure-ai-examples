@@ -19,7 +19,8 @@ export const config: IConfig = {
     ],
     imageToTextImages: [
         "devend-printed-text.jpg",
-        "nutrition-printed-text.jpg"
+        "nutrition-printed-text.jpg",
+        "newsletter.pdf"
     ],
     thumbnailImages: [
         "wayne-gretzky.jpg",

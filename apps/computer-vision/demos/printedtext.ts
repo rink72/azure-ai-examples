@@ -9,20 +9,44 @@ export async function imageToTextDemo(client: ComputerVisionClient)
         const imagePath = `${config.imageLocation}/${imageName}`;
         const imageData = fs.readFileSync(imagePath);
 
-        const result = await client.recognizePrintedTextInStream(true, imageData);
+        const readRequest = await client.readInStream(imageData);
+
+        const resultGuid = getOperationGuid(readRequest.operationLocation);
+
+        if (!resultGuid)
+        {
+            continue;
+        }
+
+        const result = await waitForOperation(client, resultGuid);
 
         console.log('--------------------------------------------------')
         console.log(`Recognized text from ${imageName}:`);
         console.log('--------------------------------------------------')
 
-        result.regions?.forEach(region =>
+        if (!result.analyzeResult)
         {
-            region.lines?.forEach(line =>
+            console.warn('No analyze result found.');
+
+            continue;
+        }
+
+        for (const page of result.analyzeResult.readResults)
+        {
+            console.log('')
+            console.log(`Page ${page.page}:`)
+            console.log('')
+
+            if (!page.lines)
             {
-                const lineText = line.words?.map(word => word.text).join(" ");
-                console.log(lineText);
-            });
-        });
+                continue;
+            }
+
+            for (const line of page.lines)
+            {
+                console.log(line.text);
+            }
+        }
 
         console.log('')
         console.log('')
@@ -30,4 +54,36 @@ export async function imageToTextDemo(client: ComputerVisionClient)
         console.log('')
         console.log('')
     }
+}
+
+async function waitForOperation(client: ComputerVisionClient, operationGuid: string)
+{
+    let result = await client.getReadResult(operationGuid);
+
+    const maxRetries = 30;
+    let currentAttempt = 0;
+
+    while (result.status === 'notStarted' || result.status === 'running')
+    {
+        currentAttempt++;
+
+        if (currentAttempt >= maxRetries)
+        {
+            throw new Error(`Operation ${operationGuid} timed out.`);
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        result = await client.getReadResult(operationGuid);
+    }
+
+    return result;
+}
+
+function getOperationGuid(url: string): string
+{
+    const parts = url.split('/');
+    const guid = parts[parts.length - 1];
+
+    return guid;
 }

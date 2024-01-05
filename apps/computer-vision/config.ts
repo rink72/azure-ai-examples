@@ -6,6 +6,7 @@ export interface IConfig
     imageToTextImages: string[]
     thumbnailImages: string[]
     brandImages: string[]
+    landmarkImages: string[]
 }
 
 export const config: IConfig = {
@@ -30,5 +31,12 @@ export const config: IConfig = {
         "nike.webp",
         "logo-redesign.webp",
         "suzuki.jpg"
+    ],
+    landmarkImages: [
+        "saddledome.jpg",
+        "eiffel-tower.jpg",
+        "great-wall.jpg",
+        "kremlin.jpg",
+        "sphinx.jpg"
     ]
 }

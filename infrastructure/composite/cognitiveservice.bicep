@@ -1,6 +1,9 @@
 @description('Cognitive service name')
 param cognitiveServiceName string
 
+@description('Storage account name')
+param storageAccountName string
+
 @description('Principals to assign Cognitive Services Contributor access')
 param principals array = []
 
@@ -18,6 +21,15 @@ module cognitiveService '../components/cognitiveservice.bicep' = {
   params: {
     name: cognitiveServiceName
     principals: principals
+    location: location
+    tags: tags
+  }
+}
+
+module storageAccount '../components/storageaccount.bicep' = {
+  name: '${storageAccountName}-${deploymentSuffix}'
+  params: {
+    name: storageAccountName
     location: location
     tags: tags
   }

@@ -4,6 +4,7 @@ var namePrefix = 'rink72aistudy'
 
 param resourceGroupName = '${namePrefix}-rgp'
 param cognitiveServiceName = '${namePrefix}-cog'
+param storageAccountName = '${namePrefix}sa'
 
 param principals = [
   {

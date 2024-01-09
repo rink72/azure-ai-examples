@@ -1,34 +1,27 @@
 import { config } from "./config";
 import { DefaultAzureCredential } from "@azure/identity";
 import { BlobServiceClient } from "@azure/storage-blob";
-import { getFileList } from "./files";
-import { copyFileToBlobStorage } from "./azure";
+import { analyzeDocuments, uploadTrainingData } from "./helpers";
+import { DocumentAnalysisClient } from "@azure/ai-form-recognizer";
 
 async function main()
 {
     const azureCredential = new DefaultAzureCredential();
-    const blobClient = new BlobServiceClient(config.blobEndpoint, azureCredential)
+    const blobClient = new BlobServiceClient(config.blobEndpoint, azureCredential);
 
-    const trainingFileList = await getFileList(config.trainingSourcePath, ".tif");
+    // How to create admin client
+    // const modelAdminClient = new DocumentModelAdministrationClient(config.cognitiveEndpoint, azureCredential);
 
-    console.log(`Uploading ${trainingFileList.length} training files to blob storage`)
+    const analysisClient = new DocumentAnalysisClient(
+        config.cognitiveEndpoint,
+        azureCredential
+    );
 
-    await Promise.all(trainingFileList.map(async file => 
-    {
-        const fullFilePath = `${config.trainingSourcePath}/${file}`;
+    await uploadTrainingData(blobClient);
 
-        await copyFileToBlobStorage(fullFilePath, blobClient, config.trainingContainerName);
-    }));
+    // await trainDocumentModel(blobClient, modelAdminClient);
 
-    // const formClient = new DocumentAnalysisClient(
-    //     config.cognitiveEndpoint,
-    //     azureCredential
-    // );
-
-    // const adminClient = new DocumentModelAdministrationClient(
-    //     config.cognitiveEndpoint,
-    //     azureCredential
-    // )
+    await analyzeDocuments(analysisClient);
 }
 
 main();

@@ -6,6 +6,9 @@ param resourceGroupName string
 @description('Name of the Azure Cognitive Service')
 param cognitiveServiceName string
 
+@description('Name of the Azure Storage Account')
+param storageAccountName string
+
 @description('Tags to apply to all resources')
 param tags object
 
@@ -28,6 +31,7 @@ module cognitiveService 'composite/cognitiveservice.bicep' = {
   scope: resourceGroup
   params: {
     cognitiveServiceName: cognitiveServiceName
+    storageAccountName: storageAccountName
     principals: principals
     location: location
     tags: tags

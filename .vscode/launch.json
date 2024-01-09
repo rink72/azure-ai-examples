@@ -28,6 +28,20 @@
             ],
             "cwd": "${workspaceFolder}/apps/computer-vision",
             "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test form recognition",
+            "runtimeArgs": [
+                "-r",
+                "ts-node/register"
+            ],
+            "args": [
+                "${workspaceFolder}/apps/form-recogniser/main.ts"
+            ],
+            "cwd": "${workspaceFolder}/apps/form-recogniser",
+            "console": "integratedTerminal"
         }
     ]
 }

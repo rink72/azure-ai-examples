@@ -6,9 +6,9 @@
         "typescript": "^5.3.3"
     },
     "dependencies": {
-        "@azure/cognitiveservices-computervision": "^8.2.0",
+        "@azure/cognitiveservices-customvision-prediction": "^5.1.2",
+        "@azure/cognitiveservices-customvision-training": "^5.2.0",
         "@azure/identity": "^4.0.0",
-        "@azure/ms-rest-js": "^2.7.0",
-        "terminal-image": "^2.0.0"
+        "@azure/ms-rest-js": "^2.7.0"
     }
 }

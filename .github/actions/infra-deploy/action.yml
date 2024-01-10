@@ -18,7 +18,7 @@ inputs:
     type: string
     title: Location
     description: Azure region to deploy to
-    default: australiaeast
+    default: eastus
     required: false
 
   preview:

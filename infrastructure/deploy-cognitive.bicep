@@ -13,7 +13,7 @@ param storageAccountName string
 param tags object
 
 @description('Name of the Azure region to deploy all resources')
-param location string = 'australiaeast'
+param location string = 'eastus'
 
 @description('Suffix for ARM deployment names')
 param deploymentNameSuffix string = utcNow('yyyyMMddhhmmss')

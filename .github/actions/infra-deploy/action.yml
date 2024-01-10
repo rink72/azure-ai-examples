@@ -18,7 +18,7 @@ inputs:
     type: string
     title: Location
     description: Azure region to deploy to
-    default: australiaeast
+    default: eastus
     required: false
 
   preview:
@@ -39,11 +39,13 @@ runs:
             --location ${{ inputs.location }} \
             --template-file ${{ inputs.templatePath }} \
             --parameters ${{ inputs.parametersPath }} \
+            --name "aistudy-$(date +%Y%m%d%H%M%S)" \
             --output table
         else
           az deployment sub create \
             --location ${{ inputs.location }} \
             --template-file ${{ inputs.templatePath }} \
             --parameters ${{ inputs.parametersPath }} \
+            --name "aistudy-$(date +%Y%m%d%H%M%S)" \
             --output table
         fi

@@ -42,6 +42,20 @@
             ],
             "cwd": "${workspaceFolder}/apps/form-recogniser",
             "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test object detection",
+            "runtimeArgs": [
+                "-r",
+                "ts-node/register"
+            ],
+            "args": [
+                "${workspaceFolder}/apps/object-detection/main.ts"
+            ],
+            "cwd": "${workspaceFolder}/apps/object-detection",
+            "console": "integratedTerminal"
         }
     ]
 }

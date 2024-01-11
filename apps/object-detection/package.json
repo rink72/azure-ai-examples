@@ -7,7 +7,7 @@
     },
     "dependencies": {
         "@azure/cognitiveservices-customvision-prediction": "^5.1.2",
-        "@azure/cognitiveservices-customvision-training": "^5.2.0",
+        "@azure/cognitiveservices-customvision-training": "5.1.2",
         "@azure/identity": "^4.0.0",
         "@azure/ms-rest-js": "^2.7.0"
     }

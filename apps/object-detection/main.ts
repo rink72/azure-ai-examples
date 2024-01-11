@@ -2,6 +2,7 @@ import { TrainingAPIClient } from "@azure/cognitiveservices-customvision-trainin
 import { config } from "./config";
 import { DefaultAzureCredential } from "@azure/identity";
 import { TokenCredentials } from "@azure/ms-rest-js";
+import { createVisionProject, removeExistingImages, removeExistingTags, testImages, trainModel, uploadTrainingData } from "./helpers";
 
 async function main()
 {
@@ -13,9 +14,22 @@ async function main()
         new TokenCredentials(visionToken),
         config.cognitiveEndpoint);
 
-    const domains = await trainingClient.createProject("test");
+    const project = await createVisionProject(trainingClient);
 
-    console.log(domains);
+    if (!project.id)
+    {
+        throw new Error("Project ID is required");
+    }
+
+    await removeExistingImages(trainingClient, project.id);
+
+    await removeExistingTags(trainingClient, project.id)
+
+    await uploadTrainingData(trainingClient, project.id);
+
+    await trainModel(trainingClient, project.id)
+
+    await testImages(trainingClient, project.id);
 }
 
 main();

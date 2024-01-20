@@ -21,6 +21,7 @@ module languageService '../components/cognitiveservice.bicep' = {
   params: {
     name: languageServiceName
     kind: 'TextAnalytics'
+    sku: 'S'
     principals: principals
     location: location
     tags: tags

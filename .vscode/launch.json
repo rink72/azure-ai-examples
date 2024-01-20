@@ -56,6 +56,21 @@
             ],
             "cwd": "${workspaceFolder}/apps/object-detection",
             "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test speech",
+            "runtimeArgs": [
+                "-r",
+                "ts-node/register"
+            ],
+            "args": [
+                "${workspaceFolder}/apps/speech/main.ts"
+            ],
+            "cwd": "${workspaceFolder}/apps/speech",
+            "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/.env.local"
         }
     ]
 }

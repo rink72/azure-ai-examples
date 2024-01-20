@@ -7,6 +7,9 @@ param tags object = {}
 @description('Resource location')
 param location string = resourceGroup().location
 
+@description('Kind of cognitive service')
+param kind string
+
 @description('Principals to assign Cognitive Services access')
 param principals array = []
 
@@ -20,7 +23,7 @@ resource cognitiveService 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   name: name
   tags: tags
   location: location
-  kind: 'CognitiveServices'
+  kind: kind
   sku: {
     name: 'S0'
   }

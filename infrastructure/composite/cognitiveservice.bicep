@@ -1,6 +1,9 @@
 @description('Cognitive service name')
 param cognitiveServiceName string
 
+@description('Cognitive service kind')
+param cognitiveServiceKind string = 'CognitiveServices'
+
 @description('Storage account name')
 param storageAccountName string
 
@@ -20,6 +23,7 @@ module cognitiveService '../components/cognitiveservice.bicep' = {
   name: '${cognitiveServiceName}-${deploymentSuffix}'
   params: {
     name: cognitiveServiceName
+    kind: cognitiveServiceKind
     principals: principals
     location: location
     tags: tags
